@@ -1,15 +1,14 @@
-# Usage:
-# docker-compose up -d
+# docker-compose.yml
 
-reaction:
-  image: reactioncommerce/reaction:latest
-  links:
-    - mongo
+app:
+  image: reaction/app
   ports:
     - "80:3000"
+  links:
+    - mongo
   environment:
-    ROOT_URL: "http://localhost"
-    MONGO_URL: "mongodb://mongo:27017/reaction"
+    - ROOT_URL=http://devng.geospatial.com
+    - MONGO_URL=mongodb://mongo:27017/meteor
 
 mongo:
   image: mongo:latest
